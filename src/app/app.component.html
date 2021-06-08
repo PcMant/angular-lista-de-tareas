@@ -1,0 +1,11 @@
+<h1>Lista de tareas</h1>
+<ul>
+  <li *ngFor="let item of elementosLista; let i = index">
+    <span>{{item}}</span>&nbsp;
+    <button (click)="borrarElementoLista(i)">Borrar</button>
+  </li>
+</ul>
+<p>
+  <input placeholder="Campo" [(ngModel)]="newElement">&nbsp;
+  <button (click)="add()">Añadir</button>
+</p>
