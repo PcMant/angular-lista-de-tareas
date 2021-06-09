@@ -1,11 +1,19 @@
 <h1>Lista de tareas</h1>
-<ul>
+<button (click)="visibilidadTareas()">{{BotonVisibilidadTareas}}</button>
+<p *ngIf="elementosLista.length < 1">
+  No hay ninguna tarea pendiente.
+</p>
+<ul [hidden]="testigoVisibilidadTareas">
   <li *ngFor="let item of elementosLista; let i = index">
-    <span>{{item}}</span>&nbsp;
+    <span [style.text-decoration-line]="estadoItem">{{item}}</span>&nbsp;
     <button (click)="borrarElementoLista(i)">Borrar</button>
   </li>
 </ul>
 <p>
-  <input placeholder="Campo" [(ngModel)]="newElement">&nbsp;
+  <input placeholder="Campo" [(ngModel)]="newElement" (keyup.enter)="add()" selected>&nbsp;
   <button (click)="add()">Añadir</button>
+</p>
+<p>
+  <button (click)="vaciarElementosLista()">Eliminar todas las tareas</button>&nbsp;
+  <button>Tachar todas las tareas</button>
 </p>
