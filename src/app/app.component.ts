@@ -5,10 +5,11 @@ import { Component, VERSION } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+/** */
 export class AppComponent {
   //Propiedadea//
   /** Array que almacena las tareas */
-  elementosLista: string[] = [];
+  elementosLista: {tarea: string, estadoItem: string}[] = [];
   /** Póxima tarea a guardar */
   newElement: string;
   /** Contenido para el texto de boton destinado a la visibilidad de tareas */
@@ -22,7 +23,8 @@ export class AppComponent {
    * Método que añade tareas a la lista
    */
   add(): void {
-    this.elementosLista.push(this.newElement);
+    let nuevaTarea = {tarea: this.newElement, estadoItem: 'pending'};
+    this.elementosLista.push(nuevaTarea);
     this.newElement = '';
   }
 
@@ -56,6 +58,21 @@ export class AppComponent {
     ) {
       this.BotonVisibilidadTareas = 'Ocultar elementos';
       this.testigoVisibilidadTareas = false;
+    }
+  }
+    /**
+     * @param tarea -
+     */
+    cambiarEstadoItem(tarea) {
+    tarea.estadoItem == 'completed'
+      ? (tarea.estadoItem = 'pendiente')
+      : (tarea.estadoItem = 'completed');
+  }
+
+  /** Cambia el estado de todas las tareas a completadas */
+  cambiarEstadoItems(){
+    for(let i=0; i<=this.elementosLista.length-1; i++){
+      this.elementosLista[i].estadoItem = 'completed';
     }
   }
 }

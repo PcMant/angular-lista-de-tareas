@@ -4,8 +4,8 @@
   No hay ninguna tarea pendiente.
 </p>
 <ul [hidden]="testigoVisibilidadTareas">
-  <li *ngFor="let item of elementosLista; let i = index">
-    <span [style.text-decoration-line]="estadoItem">{{item}}</span>&nbsp;
+  <li *ngFor="let item of elementosLista; let i = index"> 
+    <span (click)="cambiarEstadoItem(item)" [class]="item.estadoItem">{{item.tarea}}</span>&nbsp;
     <button (click)="borrarElementoLista(i)">Borrar</button>
   </li>
 </ul>
@@ -15,5 +15,5 @@
 </p>
 <p>
   <button (click)="vaciarElementosLista()">Eliminar todas las tareas</button>&nbsp;
-  <button>Tachar todas las tareas</button>
+  <button (click)="cambiarEstadoItems()">Completar todas las tareas</button>
 </p>
