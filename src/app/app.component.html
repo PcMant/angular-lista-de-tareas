@@ -5,25 +5,27 @@
   <title>Lista de tareas</title>
 </head>
 <body>
-  <div id='content'>
-    <h1>Lista de tareas pendientes</h1>
-    <p>
-      <input placeholder="Campo" [(ngModel)]="newElement" (keyup.enter)="add()" selected>&nbsp;
-      <button (click)="add()">Añadir</button>
-    </p>
-    <button (click)="visibilidadTareas()">{{BotonVisibilidadTareas}}</button>
-    <div [hidden]="testigoVisibilidadTareas">
-      <a *ngIf="elementosLista.length < 1">No hay ninguna tarea pendiente.</a>
-      <div class='tareas' *ngFor="let item of elementosLista; let i = index">
-        <span class='tarea' (click)="cambiarEstadoItem(item)" [class]="item.estadoItem">{{item.tarea}}</span>&nbsp;
-        <button (click)="borrarElementoLista(i)">Borrar</button>
+  <div id="principal-container">
+    <div id='content'>
+      <h1>Lista de tareas pendientes</h1>
+      <p>
+        <input placeholder="Campo" [(ngModel)]="newElement" (keyup.enter)="add()" selected>&nbsp;
+        <button (click)="add()">Añadir</button>
+      </p>
+      <button (click)="visibilidadTareas()">{{BotonVisibilidadTareas}}</button>
+      <div [hidden]="testigoVisibilidadTareas">
+        <a *ngIf="elementosLista.length < 1">No hay ninguna tarea pendiente.</a>
+        <div class='tareas' *ngFor="let item of elementosLista; let i = index">
+          <span class='tarea' (click)="cambiarEstadoItem(item)" [class]="item.estadoItem">{{item.tarea}}</span>&nbsp;
+          <button (click)="borrarElementoLista(i)">Borrar</button>
+        </div>
       </div>
-    </div>
 
-    <p>
-      <button (click)="vaciarElementosLista()">Eliminar todas las tareas</button>&nbsp;
-      <button (click)="cambiarEstadoItems()">Completar todas las tareas</button>
-    </p>
+      <p>
+        <button (click)="vaciarElementosLista()">Eliminar todas las tareas</button>&nbsp;
+        <button (click)="cambiarEstadoItems()">Completar todas las tareas</button>
+      </p>
+    </div>
   </div>
 </body>
 </html>
